@@ -1,6 +1,6 @@
 <p> Date: {{ allCurrencyRates.effectiveDate }}</p>
 <h3 class="first">Basic</h3>
-<p-table [value]="rates">
+<p-table [value]="this.filteredRates">
   <ng-template pTemplate="header">
     <tr>
       <th>
