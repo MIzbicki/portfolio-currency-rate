@@ -4,7 +4,11 @@
   <ng-template pTemplate="header">
     <tr>
       <th>
-        CODE <br>
+        CODE
+      </th>
+      <th>
+        CURRENCY
+        <br>
         <span class="p-input-icon-left">
           <i class="pi pi-search"></i>
           <input
@@ -16,8 +20,6 @@
           (keyup)="filter(query.value)"/>
         </span>
       </th>
-
-      <th>CURRENCY</th>
       <th>BID</th>
       <th>ASK</th>
     </tr>
