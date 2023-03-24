@@ -11,7 +11,7 @@ export class ExchangeRatesComponent implements OnInit {
   constructor(private service: ExchangeRatesService) { }
 
   allCurrencyRates: any = "";
-  rates: any[] = [];
+  rates: rate[] = [];
 
   ngOnInit(): void {
     this.service.getAll()
@@ -29,4 +29,11 @@ export class ExchangeRatesComponent implements OnInit {
   filter(q: string){
     console.log(q);
   }
+}
+
+export interface rate{
+  currency: string,
+  code: string,
+  bid: number,
+  ask: number
 }
