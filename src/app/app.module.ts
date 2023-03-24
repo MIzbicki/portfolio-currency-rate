@@ -6,11 +6,14 @@ import { ErrorHandler, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AccordionModule } from 'primeng/accordion';     //accordion and accordion tab
 import { MenuItem } from 'primeng/api';
+import { KeyFilterModule } from 'primeng/keyfilter';
+import { InputTextModule } from 'primeng/inputtext';
 
 
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ExchangeRatesComponent } from './exchange-rates/exchange-rates.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -19,9 +22,12 @@ import { ExchangeRatesComponent } from './exchange-rates/exchange-rates.componen
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     HttpClientModule,
     TableModule,
-    AccordionModule
+    AccordionModule,
+    KeyFilterModule,
+    InputTextModule
   ],
   providers: [
     MyAllDataServiceService,
