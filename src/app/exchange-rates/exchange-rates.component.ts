@@ -12,6 +12,7 @@ export class ExchangeRatesComponent implements OnInit {
 
   allCurrencyRates: any = "";
   rates: any[] = [];
+  filterValue:string = "abss";
 
   ngOnInit(): void {
     this.service.getAll()
@@ -24,5 +25,9 @@ export class ExchangeRatesComponent implements OnInit {
         console.log(this.rates);
       }
     )
+  }
+
+  filter(q: any){
+    console.log(q);
   }
 }

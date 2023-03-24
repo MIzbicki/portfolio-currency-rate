@@ -8,10 +8,12 @@
         <span class="p-input-icon-left">
           <i class="pi pi-search"></i>
           <input
+          #query
           type="text"
           placeholder="Search ..."
           pInputText
-          pKeyFilter="alpha" />
+          pKeyFilter="alpha"
+          (keyup)="filter(query.value)"/>
         </span>
       </th>
 
@@ -29,6 +31,7 @@
     </tr>
   </ng-template>
 </p-table>
+
 
 
 <!--

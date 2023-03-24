@@ -13,6 +13,7 @@ import { InputTextModule } from 'primeng/inputtext';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ExchangeRatesComponent } from './exchange-rates/exchange-rates.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { ExchangeRatesComponent } from './exchange-rates/exchange-rates.componen
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     HttpClientModule,
     TableModule,
     AccordionModule,
