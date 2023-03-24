@@ -3,7 +3,18 @@
 <p-table [value]="rates">
   <ng-template pTemplate="header">
     <tr>
-      <th>CODE</th>
+      <th>
+        CODE <br>
+        <span class="p-input-icon-left">
+          <i class="pi pi-search"></i>
+          <input
+          type="text"
+          placeholder="Search ..."
+          pInputText
+          pKeyFilter="alpha" />
+        </span>
+      </th>
+
       <th>CURRENCY</th>
       <th>BID</th>
       <th>ASK</th>
