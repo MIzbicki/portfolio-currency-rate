@@ -1,5 +1,5 @@
 import { ExchangeRatesService } from './../services/exchange-rates.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Pipe } from '@angular/core';
 
 @Component({
   selector: 'app-exchange-rates',
@@ -11,6 +11,7 @@ export class ExchangeRatesComponent implements OnInit {
   constructor(private service: ExchangeRatesService) { }
 
   allCurrencyRates: any = "";
+  rates: any[] = [];
 
   ngOnInit(): void {
     this.service.getAll()
@@ -19,8 +20,9 @@ export class ExchangeRatesComponent implements OnInit {
         this.allCurrencyRates = response;
         this.allCurrencyRates = this.allCurrencyRates[0];
         console.log(this.allCurrencyRates);
+        this.rates = this.allCurrencyRates.rates;
+        console.log(this.rates);
       }
     )
   }
-
 }
