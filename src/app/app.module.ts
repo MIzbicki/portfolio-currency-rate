@@ -16,6 +16,7 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ExchangeRatesComponent } from './exchange-rates/exchange-rates.component';
 import { FormsModule } from '@angular/forms';
+import { ButtonModule } from 'primeng/button';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { FormsModule } from '@angular/forms';
     AccordionModule,
     KeyFilterModule,
     InputTextModule,
-    InputSwitchModule
+    InputSwitchModule,
+    ButtonModule
   ],
   providers: [
     MyAllDataServiceService,
