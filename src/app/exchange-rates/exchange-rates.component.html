@@ -9,7 +9,11 @@
     dateFormat="dd/mm/yy"
     (onSelect)="handleDateSelect()"></p-calendar>
 
-  <p-button label="Clear" styleClass="p-button-outlined">
+  <p-button
+    label="Clear"
+    styleClass="p-button-outlined"
+    (click)="clearFilter()"
+    >
     <i class="pi pi-filter-slash"></i>
   </p-button>
 </div>
@@ -36,6 +40,7 @@
           <i class="pi pi-search"></i>
           <input
             #query
+            id="query"
             type="text"
             placeholder="Szukaj ..."
             pInputText
