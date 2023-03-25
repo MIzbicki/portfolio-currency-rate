@@ -53,6 +53,13 @@ export class ExchangeRatesComponent implements OnInit, OnDestroy {
     this.themeService.switchTheme(theme);
   }
 
+  clearFilter() {
+    //document.getElementById('query')?.value = "";
+    const inputElement = document.getElementById('query') as HTMLInputElement;
+    inputElement.value = '';
+    this.filter("");
+  }
+
   prepareDateToRequest() {
     const dateToRequest = new Date(this.selectedDate);
     const year = dateToRequest.getFullYear();
@@ -64,13 +71,17 @@ export class ExchangeRatesComponent implements OnInit, OnDestroy {
   handleDateSelect() {
     this.prepareDateToRequest();
     this.subscription2 = this.ratesOnPickedDate
-    .getRatesOnDate("https://api.nbp.pl/api/exchangerates/tables/A/" + this.dateToRequest + "/?format=json")
-    .subscribe((response) => {
-      this.allCurrencyRates = response;
-      console.log(response);
-      this.allCurrencyRates = this.allCurrencyRates[0];
-      this.filteredRates = this.rates = this.allCurrencyRates.rates;
-    });
+      .getRatesOnDate(
+        'https://api.nbp.pl/api/exchangerates/tables/A/' +
+          this.dateToRequest +
+          '/?format=json'
+      )
+      .subscribe((response) => {
+        this.allCurrencyRates = response;
+        console.log(response);
+        this.allCurrencyRates = this.allCurrencyRates[0];
+        this.filteredRates = this.rates = this.allCurrencyRates.rates;
+      });
   }
 }
 
