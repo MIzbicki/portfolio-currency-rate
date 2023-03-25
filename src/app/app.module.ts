@@ -1,3 +1,4 @@
+import { ThemeService } from './services/theme.service';
 import { TableModule } from 'primeng/table';
 import { ExchangeRatesService } from './services/exchange-rates.service';
 import { MyAppErrorHandler } from './my-errors-handler/app-error-handler';
@@ -15,6 +16,7 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ExchangeRatesComponent } from './exchange-rates/exchange-rates.component';
 import { FormsModule } from '@angular/forms';
+import { ButtonModule } from 'primeng/button';
 
 @NgModule({
   declarations: [
@@ -29,11 +31,13 @@ import { FormsModule } from '@angular/forms';
     AccordionModule,
     KeyFilterModule,
     InputTextModule,
-    InputSwitchModule
+    InputSwitchModule,
+    ButtonModule
   ],
   providers: [
     MyAllDataServiceService,
     ExchangeRatesService,
+    ThemeService,
     {provide: ErrorHandler, useClass: MyAppErrorHandler}
   ],
   bootstrap: [AppComponent]
