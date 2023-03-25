@@ -1,6 +1,11 @@
 <p> Notowania na dzień: {{ allCurrencyRates.effectiveDate }}</p>
 
-<app-calendar></app-calendar>
+<div class="calendar-container">
+  <p-button label="Clear" styleClass="p-button-outlined">
+    <i class="pi pi-filter-slash"></i>
+  </p-button>
+  <app-calendar></app-calendar>
+</div>
 <p-table [value]="this.filteredRates">
   <ng-template pTemplate="header">
     <tr>
@@ -15,7 +20,7 @@
           <input
             #query
             type="text"
-            placeholder="Search ..."
+            placeholder="Szukaj ..."
             pInputText
             pKeyFilter="alpha"
             (keyup)="filter(query.value)"/>
@@ -36,7 +41,7 @@
 <h3>Wybierz widok</h3>
 <span class="p-buttonset">
   <button pButton pRipple label="Jasny"
-  (click)="changeTheme('bootstrap-light')"></button>
+    (click)="changeTheme('bootstrap-light')"></button>
   <button pButton pRipple label="Ciemny"
-  (click)="changeTheme('bootstrap-dark')"></button>
+    (click)="changeTheme('bootstrap-dark')"></button>
 </span>
