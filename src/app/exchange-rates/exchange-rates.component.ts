@@ -1,3 +1,4 @@
+import { RatesOnPickedDateService } from './../services/rates-on-picked-date.service';
 import { ExchangeRatesService } from './../services/exchange-rates.service';
 import { Component, OnDestroy, OnInit, Pipe } from '@angular/core';
 import { ThemeService } from '../services/theme.service';
@@ -10,6 +11,7 @@ import { ThemeService } from '../services/theme.service';
 export class ExchangeRatesComponent implements OnInit, OnDestroy {
   constructor(
     private service: ExchangeRatesService,
+    private ratesOnPickedDate: RatesOnPickedDateService,
     private themeService: ThemeService
   ) {}
 
@@ -17,6 +19,7 @@ export class ExchangeRatesComponent implements OnInit, OnDestroy {
   filteredRates: rate[] = [];
   rates: rate[] = [];
   subscription: any;
+  subscription2: any;
   isDarkMode = false;
   currentDate = new Date();
   selectedDate = this.currentDate;
@@ -32,6 +35,7 @@ export class ExchangeRatesComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.subscription.unsubscribe;
+    this.subscription2.unsubscribe;
   }
 
   filter(q: string) {
@@ -58,6 +62,14 @@ export class ExchangeRatesComponent implements OnInit, OnDestroy {
 
   handleDateSelect() {
     this.prepareDateToRequest();
+    this.subscription2 = this.ratesOnPickedDate
+    .getRatesOnDate("https://api.nbp.pl/api/exchangerates/tables/A/" + this.dateToRequest + "/?format=json")
+    .subscribe((response) => {
+      this.allCurrencyRates = response;
+      console.log(response);
+      this.allCurrencyRates = this.allCurrencyRates[0];
+      this.filteredRates = this.rates = this.allCurrencyRates.rates;
+    });
   }
 }
 

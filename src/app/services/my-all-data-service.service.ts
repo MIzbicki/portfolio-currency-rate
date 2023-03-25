@@ -22,6 +22,13 @@ export class MyAllDataServiceService {
       );
   }
 
+  getRatesOnDate(urlWithDate: string){
+    return this.http.get(urlWithDate)
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
+
 
   //Me: default global handler is MyAppErrorHandler, because I change it in app.module.ts ({provide: ErrorHandler, useClass: MyAppErrorHandler})
   private handleError(error: HttpErrorResponse) {
