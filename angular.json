@@ -30,7 +30,17 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              {
+                "input": "src/theme-bootstrap-dark.scss",
+                "bundleName": "bootstrap-dark",
+                "inject": false
+              },
+              {
+                "input": "src/theme-bootstrap-light.scss",
+                "bundleName": "bootstrap-light",
+                "inject": false
+              }
             ],
             "scripts": []
           },
