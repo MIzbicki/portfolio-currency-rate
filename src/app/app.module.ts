@@ -21,6 +21,7 @@ import { FormsModule } from '@angular/forms';
 import { ButtonModule } from 'primeng/button';
 import { CalendarModule } from 'primeng/calendar';
 import { CalendarComponent } from './calendar/calendar.component';
+import { PaginatorModule } from 'primeng/paginator';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { CalendarComponent } from './calendar/calendar.component';
     InputSwitchModule,
     ButtonModule,
     CalendarModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    PaginatorModule
   ],
   providers: [
     MyAllDataServiceService,
