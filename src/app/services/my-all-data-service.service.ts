@@ -12,6 +12,8 @@ export class MyAllDataServiceService {
 
   }
 
+  errorMessage: string = "";
+
   //wrong url - to tests
   private wrong_url = 'https://wrongurl.com/';
 
@@ -25,7 +27,14 @@ export class MyAllDataServiceService {
   getRatesOnDate(urlWithDate: string){
     return this.http.get(urlWithDate)
       .pipe(
-        catchError(this.handleError)
+        catchError((error: HttpErrorResponse) => {
+          if (error.status == 404) {
+            this.errorMessage = 'Nie znaleziono danych.';
+          } else {
+            this.errorMessage = 'Wystąpił nieznany błąd.';
+          }
+          return throwError(this.errorMessage);
+        })
       );
   }
 
