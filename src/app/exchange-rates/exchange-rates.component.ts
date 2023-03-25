@@ -1,5 +1,6 @@
 import { ExchangeRatesService } from './../services/exchange-rates.service';
 import { Component, OnDestroy, OnInit, Pipe } from '@angular/core';
+import { PrimeNGConfig } from 'primeng/api';
 
 @Component({
   selector: 'app-exchange-rates',
@@ -7,7 +8,10 @@ import { Component, OnDestroy, OnInit, Pipe } from '@angular/core';
   styleUrls: ['./exchange-rates.component.scss'],
 })
 export class ExchangeRatesComponent implements OnInit, OnDestroy {
-  constructor(private service: ExchangeRatesService) {}
+  constructor(
+    private service: ExchangeRatesService,
+    private primengConfig: PrimeNGConfig
+    ) {}
 
   allCurrencyRates: any = '';
   filteredRates: rate[] = [];
@@ -16,6 +20,8 @@ export class ExchangeRatesComponent implements OnInit, OnDestroy {
   isDarkMode = false;
 
   ngOnInit(): void {
+    this.primengConfig.ripple = true;
+
     this.subscription = this.service.getAll().subscribe((response) => {
       this.allCurrencyRates = response;
       this.allCurrencyRates = this.allCurrencyRates[0];
@@ -36,7 +42,9 @@ export class ExchangeRatesComponent implements OnInit, OnDestroy {
   }
 
   toggleTheme(){
-    this.isDarkMode ? console.log("ciemne") : console.log("jasne");
+    const theme = this.isDarkMode? "nova-light":"nova-dark";
+    this
+    //this.isDarkMode ? console.log("ciemne") : console.log("jasne");
   }
 
 }
