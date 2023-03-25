@@ -1,6 +1,5 @@
 import { ExchangeRatesService } from './../services/exchange-rates.service';
 import { Component, OnDestroy, OnInit, Pipe } from '@angular/core';
-import { PrimeNGConfig } from 'primeng/api';
 import { ThemeService } from '../services/theme.service';
 
 @Component({
@@ -11,7 +10,6 @@ import { ThemeService } from '../services/theme.service';
 export class ExchangeRatesComponent implements OnInit, OnDestroy {
   constructor(
     private service: ExchangeRatesService,
-    private primengConfig: PrimeNGConfig,
     private themeService: ThemeService
   ) {}
 
@@ -20,10 +18,11 @@ export class ExchangeRatesComponent implements OnInit, OnDestroy {
   rates: rate[] = [];
   subscription: any;
   isDarkMode = false;
+  currentDate = new Date();
+  selectedDate = this.currentDate;
+  dateToRequest: string = '';
 
   ngOnInit(): void {
-    //this.primengConfig.ripple = true;
-
     this.subscription = this.service.getAll().subscribe((response) => {
       this.allCurrencyRates = response;
       this.allCurrencyRates = this.allCurrencyRates[0];
@@ -47,6 +46,18 @@ export class ExchangeRatesComponent implements OnInit, OnDestroy {
 
   changeTheme(theme: string) {
     this.themeService.switchTheme(theme);
+  }
+
+  prepareDateToRequest() {
+    const dateToRequest = new Date(this.selectedDate);
+    const year = dateToRequest.getFullYear();
+    const month = ('0' + (dateToRequest.getMonth() + 1)).slice(-2);
+    const day = ('0' + dateToRequest.getDate()).slice(-2);
+    this.dateToRequest = `${year}-${month}-${day}`;
+  }
+
+  handleDateSelect() {
+    this.prepareDateToRequest();
   }
 }
 

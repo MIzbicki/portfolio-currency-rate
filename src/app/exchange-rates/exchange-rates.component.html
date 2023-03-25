@@ -1,11 +1,18 @@
 <p> Notowania na dzień: {{ allCurrencyRates.effectiveDate }}</p>
 
+
 <div class="calendar-container">
-  <app-calendar></app-calendar>
+  <p-calendar [(ngModel)]="selectedDate"
+    [showIcon]="true"
+    dateFormat="dd/mm/yy"
+    (onSelect)="handleDateSelect()"></p-calendar>
+
   <p-button label="Clear" styleClass="p-button-outlined">
     <i class="pi pi-filter-slash"></i>
   </p-button>
 </div>
+
+
 <p-table [value]="this.filteredRates">
   <ng-template pTemplate="header">
     <tr>
@@ -29,6 +36,7 @@
       <th>Kurs waluty</th>
     </tr>
   </ng-template>
+
   <ng-template pTemplate="body" let-rate>
     <tr>
       <td>{{ rate.code }}</td>
@@ -37,6 +45,7 @@
     </tr>
   </ng-template>
 </p-table>
+
 
 <h3>Wybierz widok</h3>
 <span class="p-buttonset">
