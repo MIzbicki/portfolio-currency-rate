@@ -1,3 +1,4 @@
+import { ThemeService } from './services/theme.service';
 import { TableModule } from 'primeng/table';
 import { ExchangeRatesService } from './services/exchange-rates.service';
 import { MyAppErrorHandler } from './my-errors-handler/app-error-handler';
@@ -34,6 +35,7 @@ import { FormsModule } from '@angular/forms';
   providers: [
     MyAllDataServiceService,
     ExchangeRatesService,
+    ThemeService,
     {provide: ErrorHandler, useClass: MyAppErrorHandler}
   ],
   bootstrap: [AppComponent]

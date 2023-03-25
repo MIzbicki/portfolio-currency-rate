@@ -1,6 +1,8 @@
 <p> Date: {{ allCurrencyRates.effectiveDate }}</p>
-<p-inputSwitch [(ngModel)]="isDarkMode"
-(click)="toggleTheme()"></p-inputSwitch>
+<p-inputSwitch
+  [(ngModel)]="isDarkMode"
+  (click)="changeTheme('bootstrap-dark')">
+</p-inputSwitch>
 
 <h3 class="first">Basic</h3>
 <p-table [value]="this.filteredRates">
@@ -15,12 +17,12 @@
         <span class="p-input-icon-left">
           <i class="pi pi-search"></i>
           <input
-          #query
-          type="text"
-          placeholder="Search ..."
-          pInputText
-          pKeyFilter="alpha"
-          (keyup)="filter(query.value)"/>
+            #query
+            type="text"
+            placeholder="Search ..."
+            pInputText
+            pKeyFilter="alpha"
+            (keyup)="filter(query.value)"/>
         </span>
       </th>
       <th>Kurs waluty</th>
