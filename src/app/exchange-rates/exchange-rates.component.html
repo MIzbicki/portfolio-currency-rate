@@ -1,8 +1,4 @@
 <p> Notowania na dzień: {{ allCurrencyRates.effectiveDate }}</p>
-<p-inputSwitch
-  [(ngModel)]="isDarkMode"
-  (click)="changeTheme('bootstrap-dark')">
-</p-inputSwitch>
 
 <p-table [value]="this.filteredRates">
   <ng-template pTemplate="header">
@@ -36,7 +32,7 @@
   </ng-template>
 </p-table>
 
-<h2>Wybierz widok</h2>
+<h3>Wybierz widok</h3>
 <span class="p-buttonset">
   <button pButton pRipple label="Jasny"
   (click)="changeTheme('bootstrap-light')"></button>
