@@ -1,4 +1,6 @@
 <p> Date: {{ allCurrencyRates.effectiveDate }}</p>
+<p-inputSwitch [(ngModel)]="isDarkMode"></p-inputSwitch>
+
 <h3 class="first">Basic</h3>
 <p-table [value]="this.filteredRates">
   <ng-template pTemplate="header">

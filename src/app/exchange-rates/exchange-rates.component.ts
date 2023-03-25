@@ -13,6 +13,7 @@ export class ExchangeRatesComponent implements OnInit, OnDestroy {
   filteredRates: rate[] = [];
   rates: rate[] = [];
   subscription: any;
+  isDarkMode = false;
 
   ngOnInit(): void {
     this.subscription = this.service.getAll().subscribe((response) => {
