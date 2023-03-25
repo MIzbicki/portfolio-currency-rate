@@ -34,6 +34,11 @@ export class ExchangeRatesComponent implements OnInit, OnDestroy {
 
     console.log(this.filteredRates);
   }
+
+  toggleTheme(){
+    this.isDarkMode ? console.log("ciemne") : console.log("jasne");
+  }
+
 }
 
 export interface rate {
