@@ -7,10 +7,10 @@
   <ng-template pTemplate="header">
     <tr>
       <th>
-        CODE
+        Symbol waluty
       </th>
       <th>
-        CURRENCY
+        Waluta
         <br>
         <span class="p-input-icon-left">
           <i class="pi pi-search"></i>
@@ -23,16 +23,14 @@
           (keyup)="filter(query.value)"/>
         </span>
       </th>
-      <th>BID</th>
-      <th>ASK</th>
+      <th>Kurs waluty</th>
     </tr>
   </ng-template>
   <ng-template pTemplate="body" let-rate>
     <tr>
       <td>{{ rate.code }}</td>
       <td>{{ rate.currency }}</td>
-      <td>{{ rate.bid }}</td>
-      <td>{{ rate.ask }}</td>
+      <td>{{ rate.mid }}</td>
     </tr>
   </ng-template>
 </p-table>
