@@ -22,27 +22,6 @@ export class MyAllDataServiceService {
       );
   }
 
-  create(resource: any) {
-    return this.http.post(this.url, resource)
-      .pipe(
-        catchError(this.handleError)
-      );
-  }
-
-  update(resource: any) {
-    //put updates all object, patch update only few fields of the object
-    return this.http.put(this.url + "/" + resource.id, JSON.stringify(resource))
-      .pipe(
-        catchError(this.handleError)
-      );
-  }
-
-  delete(id: number) {
-    return this.http.delete(this.url + "/" + id)
-      .pipe(
-        catchError(this.handleError)
-      );
-  }
 
   //Me: default global handler is MyAppErrorHandler, because I change it in app.module.ts ({provide: ErrorHandler, useClass: MyAppErrorHandler})
   private handleError(error: HttpErrorResponse) {
