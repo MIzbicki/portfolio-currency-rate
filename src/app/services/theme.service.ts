@@ -15,6 +15,5 @@ export class ThemeService {
         if (themeLink) {
             themeLink.href = theme + '.css';
         }
-        console.log("Switch Theme service - po zmianie: ", themeLink.href);
     }
 }
