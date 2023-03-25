@@ -1,7 +1,6 @@
 import { ExchangeRatesService } from './../services/exchange-rates.service';
 import { Component, OnDestroy, OnInit, Pipe } from '@angular/core';
 import { PrimeNGConfig } from 'primeng/api';
-import { themeService } from './theme/service';
 
 @Component({
   selector: 'app-exchange-rates',
@@ -11,8 +10,7 @@ import { themeService } from './theme/service';
 export class ExchangeRatesComponent implements OnInit, OnDestroy {
   constructor(
     private service: ExchangeRatesService,
-    private primengConfig: PrimeNGConfig,
-    private
+    private primengConfig: PrimeNGConfig
   ) {}
 
   allCurrencyRates: any = '';
