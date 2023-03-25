@@ -1,6 +1,6 @@
+import { RatesOnPickedDateService } from './../services/rates-on-picked-date.service';
 import { ExchangeRatesService } from './../services/exchange-rates.service';
 import { Component, OnDestroy, OnInit, Pipe } from '@angular/core';
-import { PrimeNGConfig } from 'primeng/api';
 import { ThemeService } from '../services/theme.service';
 
 @Component({
@@ -11,7 +11,7 @@ import { ThemeService } from '../services/theme.service';
 export class ExchangeRatesComponent implements OnInit, OnDestroy {
   constructor(
     private service: ExchangeRatesService,
-    private primengConfig: PrimeNGConfig,
+    private ratesOnPickedDate: RatesOnPickedDateService,
     private themeService: ThemeService
   ) {}
 
@@ -19,11 +19,13 @@ export class ExchangeRatesComponent implements OnInit, OnDestroy {
   filteredRates: rate[] = [];
   rates: rate[] = [];
   subscription: any;
+  subscription2: any;
   isDarkMode = false;
+  currentDate = new Date();
+  selectedDate = this.currentDate;
+  dateToRequest: string = '';
 
   ngOnInit(): void {
-    //this.primengConfig.ripple = true;
-
     this.subscription = this.service.getAll().subscribe((response) => {
       this.allCurrencyRates = response;
       this.allCurrencyRates = this.allCurrencyRates[0];
@@ -33,6 +35,7 @@ export class ExchangeRatesComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.subscription.unsubscribe;
+    this.subscription2.unsubscribe;
   }
 
   filter(q: string) {
@@ -47,6 +50,26 @@ export class ExchangeRatesComponent implements OnInit, OnDestroy {
 
   changeTheme(theme: string) {
     this.themeService.switchTheme(theme);
+  }
+
+  prepareDateToRequest() {
+    const dateToRequest = new Date(this.selectedDate);
+    const year = dateToRequest.getFullYear();
+    const month = ('0' + (dateToRequest.getMonth() + 1)).slice(-2);
+    const day = ('0' + dateToRequest.getDate()).slice(-2);
+    this.dateToRequest = `${year}-${month}-${day}`;
+  }
+
+  handleDateSelect() {
+    this.prepareDateToRequest();
+    this.subscription2 = this.ratesOnPickedDate
+    .getRatesOnDate("https://api.nbp.pl/api/exchangerates/tables/A/" + this.dateToRequest + "/?format=json")
+    .subscribe((response) => {
+      this.allCurrencyRates = response;
+      console.log(response);
+      this.allCurrencyRates = this.allCurrencyRates[0];
+      this.filteredRates = this.rates = this.allCurrencyRates.rates;
+    });
   }
 }
 

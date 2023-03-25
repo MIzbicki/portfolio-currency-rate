@@ -1,3 +1,4 @@
+import { RatesOnPickedDateService } from './services/rates-on-picked-date.service';
 import { ThemeService } from './services/theme.service';
 import { TableModule } from 'primeng/table';
 import { ExchangeRatesService } from './services/exchange-rates.service';
@@ -44,6 +45,7 @@ import { CalendarComponent } from './calendar/calendar.component';
     MyAllDataServiceService,
     ExchangeRatesService,
     ThemeService,
+    RatesOnPickedDateService,
     {provide: ErrorHandler, useClass: MyAppErrorHandler}
   ],
   bootstrap: [AppComponent]
