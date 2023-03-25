@@ -38,6 +38,8 @@
 
 <h2>Wybierz widok</h2>
 <span class="p-buttonset">
-  <button pButton pRipple label="Jasny"></button>
-  <button pButton pRipple label="Ciemny"></button>
+  <button pButton pRipple label="Jasny"
+  (click)="changeTheme('bootstrap-light')"></button>
+  <button pButton pRipple label="Ciemny"
+  (click)="changeTheme('bootstrap-dark')"></button>
 </span>
