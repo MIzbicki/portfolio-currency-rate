@@ -4,6 +4,8 @@
 <div class="calendar-container">
   <p-calendar [(ngModel)]="selectedDate"
     [showIcon]="true"
+    [minDate]="minDate"
+    [maxDate]="currentDate"
     dateFormat="dd/mm/yy"
     (onSelect)="handleDateSelect()"></p-calendar>
 
