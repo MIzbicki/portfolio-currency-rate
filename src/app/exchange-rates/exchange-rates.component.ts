@@ -45,16 +45,6 @@ export class ExchangeRatesComponent implements OnInit, OnDestroy {
     console.log(this.filteredRates);
   }
 
-  toggleTheme() {
-    const theme = this.isDarkMode ? 'nova-light' : 'nova-dark';
-    /*
-    const body = document.querySelector('body');
-    body.classList.remove('nova-light', 'nova-dark');
-    body.classList.add(theme);
-    */
-    //this.isDarkMode ? console.log("ciemne") : console.log("jasne");
-  }
-
   changeTheme(theme: string) {
     this.themeService.switchTheme(theme);
   }
@@ -63,6 +53,5 @@ export class ExchangeRatesComponent implements OnInit, OnDestroy {
 export interface rate {
   currency: string;
   code: string;
-  bid: number;
-  ask: number;
+  mid: number;
 }
