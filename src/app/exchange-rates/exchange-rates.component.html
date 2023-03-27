@@ -71,3 +71,11 @@
   <button pButton pRipple label="Ciemny"
     (click)="changeTheme('bootstrap-dark')"></button>
 </span>
+
+
+<div class="card flex justify-content-center">
+  <p-inputSwitch
+    (click)="toggleTheme()"
+    [(ngModel)]="isDarkMode">
+  </p-inputSwitch>
+</div>

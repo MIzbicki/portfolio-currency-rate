@@ -20,18 +20,18 @@ export class ExchangeRatesComponent implements OnInit, OnDestroy {
   rates: rate[] = [];
   subscription: any;
   subscription2: any;
-  isDarkMode = false;
+  isDarkMode = true;
   currentDate = new Date();
   selectedDate = this.currentDate;
   dateToRequest: string = '';
   minDate = new Date(2002, 0, 2);
 
-  testConsolLog(){
+  testConsolLog() {
     console.log(this.minDate);
   }
 
   ngOnInit(): void {
-    this.testConsolLog();
+    this.toggleTheme();
 
     this.subscription = this.service.getAll().subscribe((response) => {
       this.allCurrencyRates = response;
@@ -47,9 +47,10 @@ export class ExchangeRatesComponent implements OnInit, OnDestroy {
 
   filter(q: string) {
     this.filteredRates = q
-      ? this.rates.filter((r: rate) =>
-          r.currency.toLowerCase().includes(q.toLowerCase()) ||
-          r.code.toLowerCase().includes(q.toLowerCase())
+      ? this.rates.filter(
+          (r: rate) =>
+            r.currency.toLowerCase().includes(q.toLowerCase()) ||
+            r.code.toLowerCase().includes(q.toLowerCase())
         )
       : this.rates;
 
@@ -60,11 +61,21 @@ export class ExchangeRatesComponent implements OnInit, OnDestroy {
     this.themeService.switchTheme(theme);
   }
 
+  toggleTheme() {
+    this.isDarkMode
+      ? this.themeService.switchTheme('bootstrap-dark')
+      : this.themeService.switchTheme('bootstrap-light');
+    /*
+    (click)="changeTheme('bootstrap-light')
+    (click)="changeTheme('bootstrap-dark')
+    */
+  }
+
   clearFilter() {
     //document.getElementById('query')?.value = "";
     const inputElement = document.getElementById('query') as HTMLInputElement;
     inputElement.value = '';
-    this.filter("");
+    this.filter('');
   }
 
   prepareDateToRequest() {
