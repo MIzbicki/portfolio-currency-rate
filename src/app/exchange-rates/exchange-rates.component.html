@@ -1,7 +1,7 @@
 <p> Notowania na dzień: {{ allCurrencyRates.effectiveDate }}</p>
 
 
-<div class="calendar-container">
+<div>
   <p-calendar [(ngModel)]="selectedDate"
     [showIcon]="true"
     [minDate]="minDate"
@@ -10,16 +10,28 @@
     [firstDayOfWeek]="1"
     dateFormat="dd/mm/yy"
     (onSelect)="handleDateSelect()"></p-calendar>
+</div>
+
+<div class="filter-container">
+  <span class="p-input-icon-left margin-between">
+    <i class="pi pi-search"></i>
+    <input
+      #query
+      id="query"
+      type="text"
+      placeholder="Szukaj ..."
+      pInputText
+      pKeyFilter="alpha"
+      (keyup)="filter(query.value)"/>
+  </span>
 
   <p-button
     label="Wyczyść"
     styleClass="p-button-outlined"
-    (click)="clearFilter()"
-    >
+    (click)="clearFilter()">
     <i class="pi pi-filter-slash button-inner-spacing"></i>
   </p-button>
 </div>
-
 
 <p-table
   [value]="this.filteredRates"
@@ -27,7 +39,8 @@
   [rows]="10"
   [showCurrentPageReport]="true"
   [tableStyle]="{ 'min-width': '50rem' }"
-  currentPageReportTemplate="Wyniki od {first} do {last} - Wszystkie wyniki: {totalRecords}"
+  currentPageReportTemplate="Wyniki od {first} do {last} - Wszystkie wyniki:
+  {totalRecords}"
   [rowsPerPageOptions]="[5, 10, 25, 50]">
   <ng-template pTemplate="header">
     <tr>
@@ -37,17 +50,6 @@
       <th>
         Waluta
         <br>
-        <span class="p-input-icon-left">
-          <i class="pi pi-search"></i>
-          <input
-            #query
-            id="query"
-            type="text"
-            placeholder="Szukaj ..."
-            pInputText
-            pKeyFilter="alpha"
-            (keyup)="filter(query.value)"/>
-        </span>
       </th>
       <th>Kurs waluty</th>
     </tr>
