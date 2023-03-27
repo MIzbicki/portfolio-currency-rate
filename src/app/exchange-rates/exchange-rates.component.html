@@ -6,6 +6,8 @@
     [showIcon]="true"
     [minDate]="minDate"
     [maxDate]="currentDate"
+    [disabledDays]="[0,6]"
+    [firstDayOfWeek]="1"
     dateFormat="dd/mm/yy"
     (onSelect)="handleDateSelect()"></p-calendar>
 
