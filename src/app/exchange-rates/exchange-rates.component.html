@@ -10,7 +10,7 @@
     (onSelect)="handleDateSelect()"></p-calendar>
 
   <p-button
-    label="Clear"
+    label="Wyczyść"
     styleClass="p-button-outlined"
     (click)="clearFilter()"
     >
@@ -22,11 +22,10 @@
 <p-table
   [value]="this.filteredRates"
   [paginator]="true"
-  [rows]="5"
+  [rows]="10"
   [showCurrentPageReport]="true"
   [tableStyle]="{ 'min-width': '50rem' }"
-  currentPageReportTemplate="Showing {first} to {last} of {totalRecords}
-  entries"
+  currentPageReportTemplate="Wyniki od {first} do {last} - Wszystkie wyniki: {totalRecords}"
   [rowsPerPageOptions]="[5, 10, 25, 50]">
   <ng-template pTemplate="header">
     <tr>

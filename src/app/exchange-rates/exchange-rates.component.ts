@@ -26,7 +26,13 @@ export class ExchangeRatesComponent implements OnInit, OnDestroy {
   dateToRequest: string = '';
   minDate = new Date(2002, 0, 2);
 
+  testConsolLog(){
+    console.log(this.minDate);
+  }
+
   ngOnInit(): void {
+    this.testConsolLog();
+
     this.subscription = this.service.getAll().subscribe((response) => {
       this.allCurrencyRates = response;
       this.allCurrencyRates = this.allCurrencyRates[0];
