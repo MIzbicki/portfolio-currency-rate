@@ -48,7 +48,8 @@ export class ExchangeRatesComponent implements OnInit, OnDestroy {
   filter(q: string) {
     this.filteredRates = q
       ? this.rates.filter((r: rate) =>
-          r.currency.toLowerCase().includes(q.toLowerCase())
+          r.currency.toLowerCase().includes(q.toLowerCase()) ||
+          r.code.toLowerCase().includes(q.toLowerCase())
         )
       : this.rates;
 
