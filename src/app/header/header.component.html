@@ -3,15 +3,17 @@
     <h1>Michał Izbicki - Portfolio</h1>
   </div>
   <div class="col-2">
-    <p>Ciemny motyw:
-      <span *ngIf="isDarkMode">wł.</span>
-      <span *ngIf="!isDarkMode">wył.</span>
-    </p>
-    <div class="card flex justify-content-center">
-      <p-inputSwitch
-        (click)="toggleTheme()"
-        [(ngModel)]="isDarkMode">
-      </p-inputSwitch>
+    <div class="max-size">
+      <p>Ciemny motyw:
+        <span *ngIf="isDarkMode">wł.</span>
+        <span *ngIf="!isDarkMode">wył.</span>
+      </p>
+      <div class="card flex justify-content-center">
+        <p-inputSwitch
+          (click)="toggleTheme()"
+          [(ngModel)]="isDarkMode">
+        </p-inputSwitch>
+      </div>
     </div>
   </div>
 </div>
