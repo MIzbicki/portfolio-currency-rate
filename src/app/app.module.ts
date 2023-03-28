@@ -22,12 +22,14 @@ import { ButtonModule } from 'primeng/button';
 import { CalendarModule } from 'primeng/calendar';
 import { CalendarComponent } from './calendar/calendar.component';
 import { PaginatorModule } from 'primeng/paginator';
+import { HeaderComponent } from './header/header.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ExchangeRatesComponent,
-    CalendarComponent
+    CalendarComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,

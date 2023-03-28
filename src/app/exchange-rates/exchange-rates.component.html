@@ -64,13 +64,4 @@
   </ng-template>
 </p-table>
 
-<p>Ciemny motyw:
-  <span *ngIf="isDarkMode">wł.</span>
-  <span *ngIf="!isDarkMode">wył.</span>
-</p>
-<div class="card flex justify-content-center">
-  <p-inputSwitch
-    (click)="toggleTheme()"
-    [(ngModel)]="isDarkMode">
-  </p-inputSwitch>
-</div>
+

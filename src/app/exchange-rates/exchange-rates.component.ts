@@ -11,8 +11,7 @@ import { ThemeService } from '../services/theme.service';
 export class ExchangeRatesComponent implements OnInit, OnDestroy {
   constructor(
     private service: ExchangeRatesService,
-    private ratesOnPickedDate: RatesOnPickedDateService,
-    private themeService: ThemeService
+    private ratesOnPickedDate: RatesOnPickedDateService
   ) {}
 
   allCurrencyRates: any = '';
@@ -20,7 +19,7 @@ export class ExchangeRatesComponent implements OnInit, OnDestroy {
   rates: rate[] = [];
   subscription: any;
   subscription2: any;
-  isDarkMode = true;
+
   currentDate = new Date();
   selectedDate = this.currentDate;
   dateToRequest: string = '';
@@ -31,8 +30,6 @@ export class ExchangeRatesComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.toggleTheme();
-
     this.subscription = this.service.getAll().subscribe((response) => {
       this.allCurrencyRates = response;
       this.allCurrencyRates = this.allCurrencyRates[0];
@@ -57,19 +54,6 @@ export class ExchangeRatesComponent implements OnInit, OnDestroy {
     console.log(this.filteredRates);
   }
 
-  changeTheme(theme: string) {
-    this.themeService.switchTheme(theme);
-  }
-
-  toggleTheme() {
-    this.isDarkMode
-      ? this.themeService.switchTheme('bootstrap-dark')
-      : this.themeService.switchTheme('bootstrap-light');
-    /*
-    (click)="changeTheme('bootstrap-light')
-    (click)="changeTheme('bootstrap-dark')
-    */
-  }
 
   clearFilter() {
     //document.getElementById('query')?.value = "";
