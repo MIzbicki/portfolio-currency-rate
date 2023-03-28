@@ -34,6 +34,8 @@
 </div>
 
 <p-table
+  responsiveLayout="stack"
+  scrollHeight="flex"
   [value]="this.filteredRates"
   [paginator]="true"
   [rows]="10"
@@ -51,7 +53,9 @@
         Waluta
         <br>
       </th>
-      <th>Kurs waluty</th>
+      <th class="bottom-underline">
+        Kurs waluty
+      </th>
     </tr>
   </ng-template>
 
@@ -63,5 +67,3 @@
     </tr>
   </ng-template>
 </p-table>
-
-
