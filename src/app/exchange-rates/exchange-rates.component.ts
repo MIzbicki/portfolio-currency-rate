@@ -11,8 +11,7 @@ import { ThemeService } from '../services/theme.service';
 export class ExchangeRatesComponent implements OnInit, OnDestroy {
   constructor(
     private service: ExchangeRatesService,
-    private ratesOnPickedDate: RatesOnPickedDateService,
-    private themeService: ThemeService
+    private ratesOnPickedDate: RatesOnPickedDateService
   ) {}
 
   allCurrencyRates: any = '';
@@ -20,19 +19,17 @@ export class ExchangeRatesComponent implements OnInit, OnDestroy {
   rates: rate[] = [];
   subscription: any;
   subscription2: any;
-  isDarkMode = false;
+
   currentDate = new Date();
   selectedDate = this.currentDate;
   dateToRequest: string = '';
   minDate = new Date(2002, 0, 2);
 
-  testConsolLog(){
+  testConsolLog() {
     console.log(this.minDate);
   }
 
   ngOnInit(): void {
-    this.testConsolLog();
-
     this.subscription = this.service.getAll().subscribe((response) => {
       this.allCurrencyRates = response;
       this.allCurrencyRates = this.allCurrencyRates[0];
@@ -47,24 +44,22 @@ export class ExchangeRatesComponent implements OnInit, OnDestroy {
 
   filter(q: string) {
     this.filteredRates = q
-      ? this.rates.filter((r: rate) =>
-          r.currency.toLowerCase().includes(q.toLowerCase()) ||
-          r.code.toLowerCase().includes(q.toLowerCase())
+      ? this.rates.filter(
+          (r: rate) =>
+            r.currency.toLowerCase().includes(q.toLowerCase()) ||
+            r.code.toLowerCase().includes(q.toLowerCase())
         )
       : this.rates;
 
     console.log(this.filteredRates);
   }
 
-  changeTheme(theme: string) {
-    this.themeService.switchTheme(theme);
-  }
 
   clearFilter() {
     //document.getElementById('query')?.value = "";
     const inputElement = document.getElementById('query') as HTMLInputElement;
     inputElement.value = '';
-    this.filter("");
+    this.filter('');
   }
 
   prepareDateToRequest() {

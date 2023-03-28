@@ -34,6 +34,8 @@
 </div>
 
 <p-table
+  responsiveLayout="stack"
+  scrollHeight="flex"
   [value]="this.filteredRates"
   [paginator]="true"
   [rows]="10"
@@ -51,7 +53,9 @@
         Waluta
         <br>
       </th>
-      <th>Kurs waluty</th>
+      <th class="bottom-underline">
+        Kurs waluty
+      </th>
     </tr>
   </ng-template>
 
@@ -63,11 +67,3 @@
     </tr>
   </ng-template>
 </p-table>
-
-<h3>Wybierz widok</h3>
-<span class="p-buttonset">
-  <button pButton pRipple label="Jasny"
-    (click)="changeTheme('bootstrap-light')"></button>
-  <button pButton pRipple label="Ciemny"
-    (click)="changeTheme('bootstrap-dark')"></button>
-</span>
