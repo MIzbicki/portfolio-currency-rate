@@ -46,15 +46,19 @@
   [rowsPerPageOptions]="[5, 10, 25, 50]">
   <ng-template pTemplate="header">
     <tr>
-      <th>
+      <th pSortableColumn="code">
         Symbol waluty
+        <p-sortIcon></p-sortIcon>
       </th>
-      <th>
+      <th pSortableColumn="currency">
         Waluta
-        <br>
+        <p-sortIcon></p-sortIcon>
       </th>
-      <th class="bottom-underline">
+      <th
+        pSortableColumn="mid"
+        class="bottom-underline">
         Kurs waluty
+        <p-sortIcon></p-sortIcon>
       </th>
     </tr>
   </ng-template>
