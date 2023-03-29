@@ -8,6 +8,6 @@ import { Injectable } from '@angular/core';
 export class ExchangeRatesService extends MyAllDataServiceService {
 
   constructor(http: HttpClient) {
-    super(http, 'https://api.nbp.pl/api/exchangerates/tables/A/?format=json');
+    super(http, 'https://api.nbp.pl/api/exchangerates/tables/A?format=json');
   }
 }

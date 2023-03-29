@@ -1,5 +1,3 @@
-<p> Notowania na dzień: {{ allCurrencyRates.effectiveDate }}</p>
-
 
 <div>
   <p-calendar [(ngModel)]="selectedDate"
@@ -9,8 +7,11 @@
     [disabledDays]="[0,6]"
     [firstDayOfWeek]="1"
     dateFormat="dd/mm/yy"
-    (onSelect)="handleDateSelect()"></p-calendar>
+    (onSelect)="handleDateSelect()"
+    (keyup.enter)="handleDateSelect()"></p-calendar>
 </div>
+
+<p> Notowania na dzień: {{ allCurrencyRates.effectiveDate }}</p>
 
 <div class="filter-container">
   <span class="p-input-icon-left margin-between">
@@ -21,7 +22,6 @@
       type="text"
       placeholder="Szukaj ..."
       pInputText
-      pKeyFilter="alpha"
       (keyup)="filter(query.value)"/>
   </span>
 
