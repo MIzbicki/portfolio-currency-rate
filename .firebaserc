@@ -5,8 +5,8 @@
   "targets": {
     "michal-izbicki-lsi-task": {
       "hosting": {
-          "portfolio": [
-          "michal-izbicki"
+        "portfolio": [
+          "michal-izbicki-improved"
         ]
       }
     }
