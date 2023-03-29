@@ -76,7 +76,7 @@ export class ExchangeRatesComponent implements OnInit, OnDestroy {
       .getRatesOnDate(
         'https://api.nbp.pl/api/exchangerates/tables/A/' +
           this.dateToRequest +
-          '/?format=json'
+          '?format=json'
       )
       .subscribe((response) => {
         this.allCurrencyRates = response;
