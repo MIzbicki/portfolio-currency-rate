@@ -1,5 +1,15 @@
 {
   "projects": {
     "default": "michal-izbicki-lsi-task"
-  }
+  },
+  "targets": {
+    "michal-izbicki-lsi-task": {
+      "hosting": {
+          "portfolio": [
+          "michal-izbicki"
+        ]
+      }
+    }
+  },
+  "etags": {}
 }

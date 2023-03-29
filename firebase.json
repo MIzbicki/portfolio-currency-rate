@@ -1,21 +1,6 @@
 {
   "hosting": [
     {
-      "target": "lsi",
-      "public": "dist/currency-rates",
-      "ignore": [
-        "firebase.json",
-        "**/.*",
-        "**/node_modules/**"
-      ],
-      "rewrites": [
-        {
-          "source": "**",
-          "destination": "/index.html"
-        }
-      ]
-    },
-    {
       "target": "portfolio",
       "public": "dist/currency-rates",
       "ignore": [
